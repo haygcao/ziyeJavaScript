@@ -279,7 +279,7 @@ function GetCookie() {
             } else {
                 bodys = flwydbodyVal;
 		    $.log(
-      `[${$.name + $.idx}] 获取flwydbody✅: 成功,flwydbody: ${flwqwbodyVal}`
+      `[${$.name + $.idx}] 获取flwydbody✅: 成功,flwydbody: ${flwydbodyVal}`
     );
     $.msg($.name + $.idx, `获取flwydbody: 成功🎉`, ``);
             }
