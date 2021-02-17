@@ -43,7 +43,7 @@ CASH  👉  FL_CASH
 设置兑换变量 可设置0 5 50 100   默认0  不兑换
 DHCASH  👉  FL_DHCASH
 
-注释header重写 点击 去阅读赚钱 看文章 获取flwydbodyVal（最多20个body）
+注释header重写 点击 首页 签到赚钱 去阅读赚钱 看文章 获取flwydbodyVal（最多20个body）
 flwydbodyVal 👉FL_flwydBODY
 
 
