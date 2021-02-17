@@ -17,7 +17,7 @@ boxjs链接  https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/zi
 2.1 修复判定,修复2
 2.2 防止黑号，兑换时间限制在10点到11点之间
 2.17 增加阅读任务以及阅读提现，20个body 0.12元，默认大于3元提现3元，请提前关注返利网官方公众号
-2.17-2 修改判定，进文章直接获取body
+2.17-2 修改判定，进文章直接获取body,修复判定
 
 
 ⚠️一共5个位置 5个ck  👉 6条 Secrets 
@@ -469,25 +469,25 @@ async function all() {
         await DH(); //兑换
       }
     }
-	
-	if (ydBODY.length != 0 && yd && yd.status!=1) {
+	await flwydzh();
+	if (ydBODY.length != 0 && yd && jrydb3!=1200) {
             console.log(`【阅读统计】：共有${ydBODY.length}个body,预计运行${tt}秒\n`);
             $.message += `【阅读统计】：共有${ydBODY.length}个body,预计运行${tt}秒\n`
 			  }
 			
-if (ydBODY.length != 0 && yd && yd.status==1) {
+if (ydBODY.length != 0 && yd && jrydb3==1200) {
             console.log(`【阅读统计】：共有${ydBODY.length}个body,已完成\n`);
             $.message += `【阅读统计】：共有${ydBODY.length}个body,已完成\n`
 
         }
 
                
-if (yd.status!=1){
+if (jrydb3!=1200){
             await read(); //刷阅读
             await $.wait(tt * 1000)
 			 }
       
-                await flwydzh();
+               
 				if ($.flwydzh&&xjye3-0.12>=3){
                 await flwydtx();
  }
