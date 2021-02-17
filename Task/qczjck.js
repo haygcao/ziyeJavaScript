@@ -1,9 +1,9 @@
 /* ziye  导出汽车之家ck专用    务必下载或者复制到本地使用
 
-github地址 https://github.com/ziye12/QCZJSPEED
+github地址 https://github.com/ziye66666/QCZJSPEED
 TG频道地址  https://t.me/ziyescript
 TG交流群   https://t.me/joinchat/AAAAAE7XHm-q1-7Np-tF3g
-boxjs链接  https://raw.githubusercontent.com/ziye12/QCZJSPEED/main/Task/ziye.qczjboxjs.json
+boxjs链接  https://raw.githubusercontent.com/ziye66666/QCZJSPEED/main/Task/ziye.qczjboxjs.json
 
 
 转载请备注个名字，谢谢
