@@ -269,12 +269,7 @@ function GetCookie() {
         const flwydbodyVal = $request.body
         if (flwydbodyVal) {
             let bodys = $.getdata('flwydbody' + $.idx);
-		if (bodys=="") {
-                $.log(
-      `[${$.name + $.idx}] 获取flwydbody✅: 成功,flwydbody: ${flwydbodyVal}`
-    );
-    $.msg($.name + $.idx, `获取flwydbody: 成功🎉`, ``);
-                }
+		
             if (bodys) {
 		    
                 if (bodys.indexOf(flwydbodyVal) >= 0) {
@@ -284,6 +279,10 @@ function GetCookie() {
                 flwydBody = bodys.split('&');
                 bodys = flwydbodyVal + '&' + bodys;
             } else {
+		    $.log(
+      `[${$.name + $.idx}] 获取flwydbody✅: 成功,flwydbody: ${flwydbodyVal}`
+    );
+    $.msg($.name + $.idx, `获取flwydbody: 成功🎉`, ``);
                 bodys = flwydbodyVal;
 		    
             }
