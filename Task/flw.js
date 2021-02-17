@@ -278,6 +278,10 @@ function GetCookie() {
                 bodys = flwydbodyVal + '&' + bodys;
             } else {
                 bodys = flwydbodyVal;
+		    $.log(
+      `[${$.name + $.idx}] 获取flwydbody✅: 成功,flwydbody: ${flwqwbodyVal}`
+    );
+    $.msg($.name + $.idx, `获取flwydbody: 成功🎉`, ``);
             }
             $.setdata(bodys, "flwydbody" + $.idx);
             $.log(
