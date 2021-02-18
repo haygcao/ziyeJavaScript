@@ -10,6 +10,7 @@ boxjs链接  https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/zi
 
 2.13 制作
 2.15 修复刷新问题,修复部分问题,点夺宝获取ck
+2.18 修复云函数报错
 
 ⚠️一共1个位置 1个ck  👉 1条 Secrets
 多账号换行
@@ -102,7 +103,7 @@ if (COOKIE.zhimabodyVal) {
 
 
     }
-    Length = ZM_COOKIES.zhimabodyArr.length;
+    Length = ZM_COOKIES.zhimabodyVal.length;
 }
 if (!COOKIE.zhimabodyVal) {
     if ($.isNode()) {
