@@ -95,7 +95,7 @@ if ($.isNode() && process.env.ZM_zhimabody) {
     }
     
 }
-if (COOKIE.zhimabodyArr) {
+if (COOKIE.zhimabodyVal) {
     ZM_COOKIES = {
         "zhimabodyVal": COOKIE.zhimabodyVal.split('\n'),
     
@@ -104,7 +104,7 @@ if (COOKIE.zhimabodyArr) {
     }
     Length = ZM_COOKIES.zhimabodyArr.length;
 }
-if (!COOKIE.zhimabodyArr) {
+if (!COOKIE.zhimabodyVal) {
     if ($.isNode()) {
         Object.keys(middlezhimabody).forEach((item) => {
             if (middlezhimabody[item]) {
