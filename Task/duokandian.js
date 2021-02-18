@@ -16,6 +16,7 @@ boxjs链接  https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/zi
 2.12 增加碎片显示以及兑换
 2.14 修复宝箱问题
 2.16 修复报错
+2.18 修复碎片兑换问题
 
 ⚠️一共1个位置 1个ck  👉 2条 Secrets
 多账号换行
@@ -624,9 +625,7 @@ function chip(timeout = 0) {
             let url = {
                 url: `http://dkd-api.dysdk.com/lotto/convert?${duokandianbodyVal}`,
                 headers: duokandianheaderVal,
-                body: {
-                    "id": 4
-                },
+                body: `{"id": 4}`,
             }
             $.post(url, async (err, resp, data) => {
                 try {
