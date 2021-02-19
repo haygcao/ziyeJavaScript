@@ -17,6 +17,7 @@ boxjs链接  https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/zi
 2.14 修复宝箱问题
 2.16 修复报错
 2.18 修复碎片兑换问题
+2.19 调整
 
 ⚠️一共1个位置 1个ck  👉 2条 Secrets
 多账号换行
@@ -972,6 +973,10 @@ function video(timeout = 0) {
                 if ($.awardpost && $.awardpost.status_code) {
                     console.log(`【红包奖励】：共领取${ABB}次红包奖励,共${ADD}金币\n`);
                     $.message += `【红包奖励】：共领取${ABB}次红包奖励,共${ADD}金币\n`
+                }
+                if ($.videoyz&&$.videoyz.data.status == 4) {
+                    console.log(`【红包奖励】：已完成\n`);
+                    $.message += `【红包奖励】：已完成\n`
                 }
             }, videoBODY.length * 30000 - 29000)
         }, timeout)
