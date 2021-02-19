@@ -76,7 +76,18 @@ duokandianheaderVal = {
     'Accept-Language': `zh-Hans-CN;q=1.0`
 };
 
-duokandianspdhheaderVal = {"Accept": "application/json, text/plain, */*","Accept-Encoding": "gzip, deflate","Accept-Language": "zh-cn","Connection": "close","Content-Length": "8","Content-Type": "application/json;charset=utf-8","Host": "dkd-api.dysdk.com","Origin": "http://dkd-api.dysdk.com","Referer": "http://dkd-api.dysdk.com/index.html","User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148"};
+duokandianspdhheaderVal = {
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Encoding": "gzip, deflate",
+    "Accept-Language": "zh-cn",
+    "Connection": "close",
+    "Content-Length": "8",
+    "Content-Type": "application/json;charset=utf-8",
+    "Host": "dkd-api.dysdk.com",
+    "Origin": "http://dkd-api.dysdk.com",
+    "Referer": "http://dkd-api.dysdk.com/index.html",
+    "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148"
+};
 
 
 if ($.isNode()) {
@@ -302,7 +313,7 @@ async function all() {
         if ($.lottoindex.data && $.lottoindex.data.times >= 1) {
             await lotto(); //转盘抽奖
         }
-        if ($.lottoindex.data && $.lottoindex.data.chip >= 4 ) {
+        if ($.lottoindex.data && $.lottoindex.data.chip >= 4) {
             await chip(); //碎片兑换
         }
 
@@ -626,12 +637,12 @@ function lotto(timeout = 0) {
 function chip(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
-            
+
             let url = {
                 url: `http://dkd-api.dysdk.com/lotto/convert?${duokandianbodyVal}`,
                 headers: duokandianspdhheaderVal,
                 body: `{"id":4}`,
-           
+
             }
             $.post(url, async (err, resp, data) => {
                 try {
@@ -979,7 +990,7 @@ function video(timeout = 0) {
                     console.log(`【红包奖励】：共领取${ABB}次红包奖励,共${ADD}金币\n`);
                     $.message += `【红包奖励】：共领取${ABB}次红包奖励,共${ADD}金币\n`
                 }
-                if ($.videoyz&&$.videoyz.data.status == 4) {
+                if ($.videoyz && $.videoyz.data.status == 4) {
                     console.log(`【红包奖励】：已完成\n`);
                     $.message += `【红包奖励】：已完成\n`
                 }
