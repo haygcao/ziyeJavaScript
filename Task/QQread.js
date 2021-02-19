@@ -167,6 +167,31 @@ function time(inputTime) {
     s = date.getSeconds();
     return Y + M + D + h + m + s;
 };
+
+
+
+function udid() {
+	var s = [];
+	var hexDigits = "0123456789ABCDEF";
+	for (var i = 0; i < 36; i++) {
+		s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+	}
+	s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
+	s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
+	s[8] = s[13] = s[18] = s[23] = "-";
+
+	var uuid = s.join("");
+	return uuid;
+}
+
+function udid2() {
+	function S4() {
+		return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+	}
+	return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+}
+
+
 let isGetCookie = typeof $request !== 'undefined'
 if (isGetCookie) {
     GetCookie()
@@ -202,6 +227,12 @@ async function all() {
         if (!COOKIE.QQreadheaderVal) {
             QQreadheaderVal = QQreadheaderArr[i];
         }
+
+
+IDFA=JSON.parse(QQreadheaderVal).IDFA
+qimei=JSON.parse(QQreadheaderVal).qimei
+headerss = QQreadheaderVal.replace(`${IDFA}`, `${udid()}`).replace(`${qimei}`, `${udid2()}`)
+
         O = (`${$.name + (i + 1)}🔔`);
         await console.log(`-------------------------\n\n🔔开始运行${$.name+(i+1)}【${$.name+(i+1)}】`)
         await user(); //用户信息
@@ -243,7 +274,8 @@ function msgShow() {
 function user(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
-			header = QQreadheaderVal.replace(/select6.reader.qq.com/g, `commontgw6.reader.qq.com`)
+			header = headerss.replace(/select6.reader.qq.com/g, `commontgw6.reader.qq.com`)
+
             let url = {
                 url: `https://commontgw6.reader.qq.com/v7_5_7/nativepage/getAcctInfo`,
                 headers: JSON.parse(header),
@@ -269,7 +301,7 @@ function user(timeout = 0) {
 function days(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
-            header = QQreadheaderVal.replace(/select6.reader.qq.com/g, `eventv36.reader.qq.com`)
+            header = headerss.replace(/select6.reader.qq.com/g, `eventv36.reader.qq.com`)
             let url = {
                 url: `https://eventv36.reader.qq.com/activity/pkg11955/initV4`,
                 headers: JSON.parse(header),
@@ -295,7 +327,7 @@ function days(timeout = 0) {
 function signindex(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
-            header = QQreadheaderVal.replace(/select6.reader.qq.com/g, `eventv36.reader.qq.com`)
+            header = headerss.replace(/select6.reader.qq.com/g, `eventv36.reader.qq.com`)
             let url = {
                 url: `https://eventv36.reader.qq.com/activity/pkg11955/queryPunchCardStatus`,
                 headers: JSON.parse(header),
@@ -321,7 +353,7 @@ function signindex(timeout = 0) {
 function sign(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
-            header = QQreadheaderVal.replace(/select6.reader.qq.com/g, `eventv36.reader.qq.com`)
+            header = headerss.replace(/select6.reader.qq.com/g, `eventv36.reader.qq.com`)
             let url = {
                 url: `https://eventv36.reader.qq.com/activity/pkg11955/punchCard_v2`,
                 headers: JSON.parse(header),
@@ -351,7 +383,7 @@ function sign(timeout = 0) {
 function video(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
-            header = QQreadheaderVal.replace(/select6.reader.qq.com/g, `eventv36.reader.qq.com`)
+            header = headerss.replace(/select6.reader.qq.com/g, `eventv36.reader.qq.com`)
             let url = {
                 url: `https://eventv36.reader.qq.com/activity/pkg11955/watchVideo`,
                 headers: JSON.parse(header),
@@ -377,7 +409,7 @@ function video(timeout = 0) {
 function extrabox(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
-            header = QQreadheaderVal.replace(/select6.reader.qq.com/g, `eventv36.reader.qq.com`)
+            header = headerss.replace(/select6.reader.qq.com/g, `eventv36.reader.qq.com`)
             let url = {
                 url: `https://eventv36.reader.qq.com/activity/pkg11955/queryOpenBoxInfo`,
                 headers: JSON.parse(header),
@@ -403,7 +435,7 @@ function extrabox(timeout = 0) {
 function boxaward(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
-            header = QQreadheaderVal.replace(/select6.reader.qq.com/g, `eventv36.reader.qq.com`)
+            header = headerss.replace(/select6.reader.qq.com/g, `eventv36.reader.qq.com`)
             let url = {
                 url: `https://eventv36.reader.qq.com/activity/pkg11955/openBox`,
                 headers: JSON.parse(header),
