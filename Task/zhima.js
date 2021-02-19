@@ -11,6 +11,7 @@ boxjs链接  https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/zi
 2.13 制作
 2.15 修复刷新问题,修复部分问题,点夺宝获取ck
 2.18 修复云函数报错
+2.19 调整刷新逻辑，解决无法收取晶石的问题
 
 ⚠️一共1个位置 1个ck  👉 1条 Secrets
 多账号换行
@@ -66,7 +67,7 @@ http-request https:\/\/api\.sxsjyzm\.com\/* script-path=https://raw.githubuserco
 const $ = Env("芝嫲视频");
 $.idx = ($.idx = ($.getval('zhimaSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
 const notify = $.isNode() ? require("./sendNotify") : ``;
-const COOKIE = $.isNode() ? require("./zhimaCOOKIE") : ``;
+const COOKIE = $.isNode() ? require("./zhimaACOOKIE") : ``;
 const logs = 0; // 0为关闭日志，1为开启
 const notifyttt = 1 // 0为关闭外部推送，1为12 23 点外部推送
 const notifyInterval = 2; // 0为关闭通知，1为所有通知，2为12 23 点通知  ， 3为 6 12 18 23 点通知 
@@ -271,8 +272,9 @@ async function all() {
 
 console.log(`\n${O}\n========== 【${O}】 ==========\n`);
                         $.message += `\n${O}\n========== 【${O}】 ==========\n`;
-           
+            
             await zhima(); //运行
+            await zhimasx(); //刷新
 
  
 
@@ -374,13 +376,13 @@ function zhima(timeout = 0) {
                     if (logs) $.log(`${O}, 芝嫲收晶石🚩: ${data}`);
 
 $.zhima= JSON.parse(data);
-
+await zhimasx()
                     if ($.zhima.code==200) {
 
                         console.log(`【晶石收取】:${time(Number(tts()))}领取晶石成功,等待11秒后进行下次收取\n\n`)
                         $.message +=`【晶石收取】:${time(Number(tts()))}领取晶石成功,等待11秒后进行下次收取\n\n`
 
-await zhimasx()
+
 await $.wait(11000)
 await zhima()
 
@@ -390,14 +392,14 @@ if ($.zhima.code==1001) {
 
                         console.log(`【晶石收取】:${$.zhima.mess},间隔11秒才能收取\n\n`)
                         $.message +=`【晶石收取】:${$.zhima.mess},间隔11秒才能收取\n\n`
-
+                   
                     }
 
 if ($.zhima.code==1002) {
 
                         console.log(`【晶石收取】:${$.zhima.mess},间隔3小时才能收取\n\n`)
                         $.message +=`【晶石收取】:${$.zhima.mess},间隔3小时才能收取\n\n`
-
+                      
                     }
 
 
@@ -405,7 +407,7 @@ if ($.zhima.code==156) {
 
                         console.log(`【晶石收取】:${$.zhima.mess}\n\n`)
                         $.message +=`【晶石收取】:${$.zhima.mess}\n\n`
-
+                        
                     }
 
 
