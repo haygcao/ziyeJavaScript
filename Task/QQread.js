@@ -5,50 +5,39 @@ TG交流群   https://t.me/joinchat/AAAAAE7XHm-q1-7Np-tF3g
 boxjs链接  https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/ziye.boxjs.json
 
 转载请备注个名字，谢谢
+
 ⚠️QQ阅读APP
 请点击前往下载  https://apps.apple.com/cn/app/qq%E9%98%85%E8%AF%BB-%E7%9C%8B%E5%B0%8F%E8%AF%B4%E5%A4%A7%E5%85%A8%E7%9A%84%E7%94%B5%E5%AD%90%E4%B9%A6%E9%98%85%E8%AF%BB%E7%A5%9E%E5%99%A8/id487608658
-
 或者自行下载  
-
 
 2.19 制作
 
 ⚠️一共1个位置 1个ck  👉 1条 Secrets
 多账号换行
 
-第一步 添加  hostname=bookshelf6.reader.qq.com,
+第一步 添加  hostname=commontgw6.reader.qq.com,
 
 第二步 添加header重写 
-
-登录QQ阅读APP  点击  书库  随便选择一本书加入书架 获取header
-
+登录QQ阅读APP  点击  我的 获取header
 
 QQreadheaderVal 👉QQ_QQreadHEADER
 
-
-
 ⚠️主机名以及重写👇
-hostname=bookshelf6.reader.qq.com,
+hostname=commontgw6.reader.qq.com,
 
 ############## 圈x
 #QQ阅读APP获取header
-https:\/\/bookshelf6\.reader\.qq\.com\/* url script-request-header https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/QQread.js   
+https:\/\/commontgw6\.reader\.qq\.com\/* url script-request-header https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/QQread.js   
 
 ############## loon
 #QQ阅读APP获取header
-http-request https:\/\/bookshelf6\.reader\.qq\.com\/* script-path=https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/QQread.js, requires-header=true, tag=QQ阅读APP获取header
-
-
+http-request https:\/\/commontgw6\.reader\.qq\.com\/* script-path=https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/QQread.js, requires-header=true, tag=QQ阅读APP获取header
 
 ############## surge
 #QQ阅读APP获取header
-QQ阅读APP获取header = type=http-request,pattern=https:\/\/bookshelf6\.reader\.qq\.com\/*,script-path=https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/QQread.js
-
+QQ阅读APP获取header = type=http-request,pattern=https:\/\/commontgw6\.reader\.qq\.com\/*,script-path=https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/QQread.js
 
 */
-
-
-
 const $ = Env("QQ阅读APP");
 $.idx = ($.idx = ($.getval('QQreadSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
 const notify = $.isNode() ? require("./sendNotify") : ``;
@@ -61,8 +50,6 @@ $.message = '', COOKIES_SPLIT = '', CASH = '', ddtime = '';
 const QQreadheaderArr = [];
 let QQreadheaderVal = ``;
 let middleQQreadHEADER = [];
-
-
 
 if ($.isNode() && process.env.QQ_QQreadHEADER) {
     COOKIES_SPLIT = process.env.COOKIES_SPLIT || "\n";
@@ -79,12 +66,10 @@ if ($.isNode() && process.env.QQ_QQreadHEADER) {
     } else {
         middleQQreadHEADER = process.env.QQ_QQreadHEADER.split();
     }
-    
 }
 if (COOKIE.QQreadheaderVal) {
     QQ_COOKIES = {
         "QQreadheaderVal": COOKIE.QQreadheaderVal.split('\n'),
-
     }
     Length = QQ_COOKIES.QQreadheaderVal.length;
 }
@@ -95,14 +80,9 @@ if (!COOKIE.QQreadheaderVal) {
                 QQreadheaderArr.push(middleQQreadHEADER[item]);
             }
         });
-        
     } else {
         QQreadheaderArr.push($.getdata("QQreadheader"));
-
         // 根据boxjs中设置的额外账号数，添加存在的账号数据进行任务处理
-        if ("QQreadCASH") {
-            CASH = $.getval("QQreadCASH") || '0';
-        }
         let QQreadCount = ($.getval('QQreadCount') || '1') - 0;
         for (let i = 2; i <= QQreadCount; i++) {
             if ($.getdata(`QQreadheader${i}`)) {
@@ -116,7 +96,7 @@ if (!COOKIE.QQreadheaderVal) {
 }
 
 function GetCookie() {
-    if ($request && $request.url.indexOf("cloud") >= 0 && $request.url.indexOf("commit?tid") >= 0) {
+    if ($request && $request.url.indexOf("getAcctInfo") >= 0) {
         const QQreadheaderVal = JSON.stringify($request.headers);
         if (QQreadheaderVal) $.setdata(QQreadheaderVal, "QQreadheader" + $.idx);
         $.log(
@@ -124,7 +104,6 @@ function GetCookie() {
         );
         $.msg($.name + $.idx, `获取QQreadheaderVal: 成功🎉`, ``);
     }
-
 }
 console.log(
     `================== 脚本执行 - 北京时间(UTC+8)：${new Date(
@@ -136,7 +115,6 @@ console.log(
 console.log(
     `============ 共 ${Length} 个${$.name}账号=============\n`
 );
-console.log(`============ 提现标准为：${CASH} =============\n`);
 //时间
 nowTimes = new Date(
     new Date().getTime() +
@@ -220,46 +198,25 @@ async function all() {
     for (let i = 0; i < Length; i++) {
         if (COOKIE.QQreadheaderVal) {
             QQreadheaderVal = QQ_COOKIES.QQreadheaderVal[i];
-
         }
         if (!COOKIE.QQreadheaderVal) {
             QQreadheaderVal = QQreadheaderArr[i];
-
         }
-
         O = (`${$.name + (i + 1)}🔔`);
         await console.log(`-------------------------\n\n🔔开始运行${$.name+(i+1)}【${$.name+(i+1)}】`)
-    
         await user(); //用户信息
         await signindex(); //签到列表
-		await days(); //任务列表
-		   
-        if ($.signindex&& $.signindex.data.finished == false ) {
+        await days(); //任务列表
+        if ($.signindex && $.signindex.data.finished == false) {
             await sign(); //签到
         }
-     
-   await extrabox(); //宝箱查询
-        if ($.extrabox&&$.extrabox.data.openNum >= 1&&$.extrabox&&$.extrabox.data.status == 0) {
-         
+        await extrabox(); //宝箱查询
+        if ($.extrabox && $.extrabox.data.openNum >= 1 && $.extrabox && $.extrabox.data.status == 0) {
             await boxaward(); //宝箱奖励
         }
-        if ($.days.data.addShelf.finished == false) {
-			
-			await select(); //推荐列表
-			await $.wait(1000);
-            await chip(); //加入书架
-			await $.wait(1000);
-			await exchip(); //删除书架
-						
-        }
-
-        if ($.days&&$.days.data.watchVideo.videoCount < $.days.data.watchVideo.limit) {
+        if ($.days && $.days.data.watchVideo.videoCount < $.days.data.watchVideo.limit) {
             await video(); //观看视频
-
         }
-        
-   
-
     }
 }
 //通知
@@ -286,11 +243,9 @@ function msgShow() {
 function user(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
-			header=QQreadheaderVal.replace(/bookshelf6.reader.qq.com/g, `commontgw6.reader.qq.com`)
             let url = {
                 url: `https://commontgw6.reader.qq.com/v7_5_7/nativepage/getAcctInfo`,
-                headers: JSON.parse(header),
-                
+                headers: JSON.parse(QQreadheaderVal),
             }
             $.get(url, async (err, resp, data) => {
                 try {
@@ -299,9 +254,7 @@ function user(timeout = 0) {
                     if ($.user.nick) {
                         console.log(`\n${O}\n========== 【${$.user.nick}】 ==========\n`);
                         $.message += `\n${O}\n========== 【${$.user.nick}】 ==========\n`;
-                        
                     }
-                    
                 } catch (e) {
                     $.logErr(e, resp);
                 } finally {
@@ -315,26 +268,19 @@ function user(timeout = 0) {
 function days(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
-			header=QQreadheaderVal.replace(/bookshelf6.reader.qq.com/g, `eventv36.reader.qq.com`)
+            header = QQreadheaderVal.replace(/commontgw6.reader.qq.com/g, `eventv36.reader.qq.com`)
             let url = {
                 url: `https://eventv36.reader.qq.com/activity/pkg11955/initV4`,
                 headers: JSON.parse(header),
-
             }
             $.get(url, async (err, resp, data) => {
                 try {
                     if (logs) $.log(`${O}, 任务列表🚩: ${data}`);
                     $.days = JSON.parse(data);
-                    if ($.days.code==0) {
-               
-                            console.log(`【今日金币】：${$.days.data.userBalance.coin}\n【现金余额】：${$.days.data.userBalance.cash}\n【书架任务】：${$.days.data.addShelf.finished}\n【视频任务】：${$.days.data.watchVideo.videoCount}/${$.days.data.watchVideo.limit}\n`);
-							
-									
-                            $.message += `【今日金币】：${$.days.data.userBalance.coin}\n【现金余额】：${$.days.data.userBalance.cash}\n【书架任务】：${$.days.data.addShelf.finished}\n【视频任务】：${$.days.data.watchVideo.videoCount}/${$.days.data.watchVideo.limit}\n`
-                        
- } 
-                    
-
+                    if ($.days.code == 0) {
+                        console.log(`【今日金币】：${$.days.data.userBalance.coin}\n【现金余额】：${$.days.data.userBalance.cash}\n【视频任务】：${$.days.data.watchVideo.videoCount}/${$.days.data.watchVideo.limit}\n`);
+                        $.message += `【今日金币】：${$.days.data.userBalance.coin}\n【现金余额】：${$.days.data.userBalance.cash}\n【视频任务】：${$.days.data.watchVideo.videoCount}/${$.days.data.watchVideo.limit}\n`
+                    }
                 } catch (e) {
                     $.logErr(e, resp);
                 } finally {
@@ -348,21 +294,19 @@ function days(timeout = 0) {
 function signindex(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
-			header=QQreadheaderVal.replace(/bookshelf6.reader.qq.com/g, `eventv36.reader.qq.com`)
+            header = QQreadheaderVal.replace(/commontgw6.reader.qq.com/g, `eventv36.reader.qq.com`)
             let url = {
                 url: `https://eventv36.reader.qq.com/activity/pkg11955/queryPunchCardStatus`,
                 headers: JSON.parse(header),
-                
             }
             $.get(url, async (err, resp, data) => {
                 try {
                     if (logs) $.log(`${O}, 签到查询🚩: ${data}`);
                     $.signindex = JSON.parse(data);
-                    if ($.signindex.code==0 && $.signindex.data.finished == true ) {
-                        console.log(`【签到查询】： 今日已签到,已连续签到${$.signindex.data.continuousDays.length}天\n`);
-                        $.message += `【签到查询】： 今日已签到,已连续签到${$.signindex.data.continuousDays.length}天\n`;
+                    if ($.signindex.code == 0 && $.signindex.data.finished == true) {
+                        console.log(`【签到查询】：已签到,已连续签到${$.signindex.data.continuousDays.length}天\n`);
+                        $.message += `【签到查询】：已签到,已连续签到${$.signindex.data.continuousDays.length}天\n`;
                     }
-                    
                 } catch (e) {
                     $.logErr(e, resp);
                 } finally {
@@ -376,7 +320,7 @@ function signindex(timeout = 0) {
 function sign(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
-			header=QQreadheaderVal.replace(/bookshelf6.reader.qq.com/g, `eventv36.reader.qq.com`)
+            header = QQreadheaderVal.replace(/commontgw6.reader.qq.com/g, `eventv36.reader.qq.com`)
             let url = {
                 url: `https://eventv36.reader.qq.com/activity/pkg11955/punchCard_v2`,
                 headers: JSON.parse(header),
@@ -389,7 +333,7 @@ function sign(timeout = 0) {
                         console.log(`【今日签到】： 获得${$.sign.data.coinNum}金币\n`);
                         $.message += `【今日签到】： 获得${$.sign.data.coinNum}金币\n`;
                     }
-                     if ($.sign.code == -6) {
+                    if ($.sign.code == -6) {
                         console.log(`【今日签到】：${$.sign.msg}\n`);
                         $.message += `【今日签到】：${$.sign.msg}\n`;
                     }
@@ -402,130 +346,14 @@ function sign(timeout = 0) {
         }, timeout)
     })
 }
-//推荐列表
-function select(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-						header=QQreadheaderVal.replace(/bookshelf6.reader.qq.com/g, `eventv36.reader.qq.com`)
-            let url = {
-                url: `https://select6.reader.qq.com/v7_5_7/selectRecInfostream?tabtype=0&scene=qq_rec_tab_feed&refreshFlag=0`,
-                headers: JSON.parse(header),
-
-            }
-            $.get(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 推荐列表🚩: ${data}`);
-                    $.select = JSON.parse(data);
-                    if ($.select.code==0) {
-						
-						bid=$.select.dataList[0].data.bookList[0].bid
-						
-                        console.log(`【推荐列表】：${$.select.dataList[0].data.bookList[0].title}-ID ${bid}\n`);
-                        $.message += `【推荐列表】：${$.select.dataList[0].data.bookList[0].title}-ID ${bid}\n`;
-                    }
-                    
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-
-
-
-//加入书架
-function chip(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bookshelf6.reader.qq.com/cloud/commit?tid=`,
-                headers: JSON.parse(header),
-                body: `{
- "books": [  {
-   "bookid": ${bid},
-   "method": "add",
-   "resType": 1,
-   "offset": 0,
-   "updatetime": ts(),
-   "format": "txt",
-   "origin": "",
-   "chapterid": 1
-  }
- ]
-}`,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 加入书架🚩: ${data}`);
-                    $.chip = JSON.parse(data);
-                    A = 1
-                    if ($.chip.code == 0) {
-                        console.log(`【加入书架】：成功\n`);
-                        $.message += `【加入书架】：成功\n`;
-                    }
-           
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-
-
-//删除书架
-function extchip(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bookshelf6.reader.qq.com/cloud/commit?tid=`,
-                headers: JSON.parse(header),
-                body: `{
- "books": [  {
-   "method": "batdel",
-   "resbookids": [    {
-     "id": ${bid},
-     "resType": 1
-    }
-   ]
-  }
- ]
-}`,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 删除书架🚩: ${data}`);
-                    $.extchip = JSON.parse(data);
-                    A = 1
-                    if ($.extchip.code == 0) {
-                        console.log(`【删除书架】：成功\n`);
-                        $.message += `【删除书架】：成功\n`;
-                    }
-           
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-
 //观看视频
 function video(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
-			header=QQreadheaderVal.replace(/bookshelf6.reader.qq.com/g, `eventv36.reader.qq.com`)
+            header = QQreadheaderVal.replace(/commontgw6.reader.qq.com/g, `eventv36.reader.qq.com`)
             let url = {
                 url: `https://eventv36.reader.qq.com/activity/pkg11955/watchVideo`,
                 headers: JSON.parse(header),
-
             }
             $.get(url, async (err, resp, data) => {
                 try {
@@ -535,7 +363,6 @@ function video(timeout = 0) {
                         console.log(`【观看视频】：奖励 ${$.video.data.watchVideoCoin}金币\n`);
                         $.message += `【观看视频】：奖励 ${$.video.data.watchVideoCoin}金币\n`;
                     }
-                    
                 } catch (e) {
                     $.logErr(e, resp);
                 } finally {
@@ -545,17 +372,14 @@ function video(timeout = 0) {
         }, timeout)
     })
 }
-
-
 //宝箱查询
 function extrabox(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
-			header=QQreadheaderVal.replace(/bookshelf6.reader.qq.com/g, `eventv36.reader.qq.com`)
+            header = QQreadheaderVal.replace(/commontgw6.reader.qq.com/g, `eventv36.reader.qq.com`)
             let url = {
                 url: `https://eventv36.reader.qq.com/activity/pkg11955/queryOpenBoxInfo`,
                 headers: JSON.parse(header),
-
             }
             $.get(url, async (err, resp, data) => {
                 try {
@@ -565,7 +389,6 @@ function extrabox(timeout = 0) {
                         console.log(`【宝箱查询】：剩余${$.extrabox.data.openNum}次\n`);
                         $.message += `【宝箱查询】：剩余${$.extrabox.data.openNum}次\n`;
                     }
-                    
                 } catch (e) {
                     $.logErr(e, resp);
                 } finally {
@@ -575,19 +398,14 @@ function extrabox(timeout = 0) {
         }, timeout)
     })
 }
-
-
-
-
 //宝箱奖励
 function boxaward(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
-			header=QQreadheaderVal.replace(/bookshelf6.reader.qq.com/g, `eventv36.reader.qq.com`)
+            header = QQreadheaderVal.replace(/commontgw6.reader.qq.com/g, `eventv36.reader.qq.com`)
             let url = {
                 url: `https://eventv36.reader.qq.com/activity/pkg11955/openBox`,
                 headers: JSON.parse(header),
-   
             }
             $.get(url, async (err, resp, data) => {
                 try {
@@ -597,7 +415,6 @@ function boxaward(timeout = 0) {
                         console.log(`【宝箱奖励】：奖励 ${$.boxaward.data.coin}金币\n`);
                         $.message += `【宝箱奖励】：奖励 ${$.boxaward.data.coin}金币\n`;
                     }
-                    
                 } catch (e) {
                     $.logErr(e, resp);
                 } finally {
@@ -607,10 +424,6 @@ function boxaward(timeout = 0) {
         }, timeout)
     })
 }
-
-
-
-
 // prettier-ignore
 function Env(t, e) {
     class s {
