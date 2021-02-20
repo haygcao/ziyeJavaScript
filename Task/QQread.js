@@ -254,7 +254,7 @@ async function all() {
             "ywkey": `${ywkey}`,
             "qimei": "",
             "auditStatus": "0",
-            "Host": "iostgw6.reader.qq.com",
+            "Host": "commontgw6.reader.qq.com",
             "ywguid": `${ywguid}`,
             "Cache-Control": "no-cache",
             "server_sex": "1",
@@ -310,7 +310,7 @@ function user(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
             let url = {
-                url: QQreadurlVal,
+                url: `https://commontgw6.reader.qq.com/v7_5_7/nativepage/getAcctInfo`,
                 headers: QQreadheaderVal,
 
             }
@@ -319,8 +319,8 @@ function user(timeout = 0) {
                     if (logs) $.log(`${O}, 用户信息🚩: ${data}`);
                     $.user = JSON.parse(data);
                     if ($.user.code == 0) {
-                        console.log(`\n${O}\n========== 【${$.user.nickname}】 ==========\n`);
-                        $.message += `\n${O}\n========== 【${$.user.nickname}】 ==========\n`;
+                        console.log(`\n${O}\n========== 【${$.user.nick}】 ==========\n`);
+                        $.message += `\n${O}\n========== 【${$.user.nick}】 ==========\n`;
                     }
                 } catch (e) {
                     $.logErr(e, resp);
