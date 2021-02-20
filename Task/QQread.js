@@ -24,7 +24,7 @@ boxjs链接  https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/zi
 QQreadurlVal 👉QQ_QQreadURL
 
 ⚠️主机名以及重写👇
-hostname=iostgw6.reader.qq.com,
+hostname=iostgw6.reader.qq.com,newios.reader.qq.com,
 
 ############## 圈x
 #QQ阅读APP获取url
