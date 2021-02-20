@@ -238,7 +238,7 @@
         {
             "id": "QQread",
             "name": "QQ阅读APP",
-            "keys": ["QQreadheader", "QQreadheader2", "QQreadheader3", "QQreadheader4", "QQreadheader5", "QQreadheader6", "QQreadheader7", "QQreadheader8", "QQreadheader9", "QQreadheader10", "QQreadheader11", "QQreadheader12", "QQreadheader13", "QQreadheader14", "QQreadheader15", "QQreadheader16", "QQreadheader17", "QQreadheader18", "QQreadheader19", "QQreadheader20"],
+            "keys": ["QQreadurl", "QQreadurl2", "QQreadurl3", "QQreadurl4", "QQreadurl5", "QQreadurl6", "QQreadurl7", "QQreadurl8", "QQreadurl9", "QQreadurl10", "QQreadurl11", "QQreadurl12", "QQreadurl13", "QQreadurl14", "QQreadurl15", "QQreadurl16", "QQreadurl17", "QQreadurl18", "QQreadurl19", "QQreadurl20"],
             "author": "@ziye",
             "settings": [{
                     "id": "QQreadSuffix",
