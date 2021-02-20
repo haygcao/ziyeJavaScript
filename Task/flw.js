@@ -269,7 +269,9 @@ function GetCookie() {
         const flwydbodyVal = $request.body
         if (flwydbodyVal) {
             let bodys = $.getdata('flwydbody' + $.idx);
+		
             if (bodys) {
+		    
                 if (bodys.indexOf(flwydbodyVal) >= 0) {
                     $.msg('body重复跳过');
                     $.done();
@@ -277,7 +279,7 @@ function GetCookie() {
                 flwydBody = bodys.split('&');
                 bodys = flwydbodyVal + '&' + bodys;
             } else {
-                bodys = flwydbodyVal;
+                bodys = flwydbodyVal;		    
             }
             $.setdata(bodys, "flwydbody" + $.idx);
             $.log(
@@ -359,6 +361,7 @@ if (isGetCookie) {
 } else {
   !(async () => {
     await all();
+    await $.wait(500);
     await msgShow();
   })()
   .catch((e) => {
@@ -419,7 +422,7 @@ async function all() {
         if (flwydbodyVal == '') {
             ydBODY.length = 0
             tt = 0
-        } else tt = ydBODY.length * 1 - 0.9
+        } else tt = ydBODY.length * 1 - 0.5
 	
 	
 	
@@ -1009,7 +1012,7 @@ function read(timeout = 0) {
                     $.message += `【刷阅读】：共领取${ins}次阅读奖励,共${inss}阅读币\n`
                 }
                 
-            }, ydBODY.length * 1000-500)
+            }, ydBODY.length * 1000-700)
         }, timeout)
     })
 }
