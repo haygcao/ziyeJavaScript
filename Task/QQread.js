@@ -16,7 +16,7 @@ boxjs链接  https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/zi
 ⚠️一共1个位置 1个ck  👉 1条 Secrets
 多账号换行
 
-第一步 添加  hostname=iostgw6.reader.qq.com,
+第一步 添加  hostname=iostgw6.reader.qq.com,newios.reader.qq.com,
 
 第二步 添加url重写 
 登录QQ阅读APP   获取url
@@ -28,15 +28,15 @@ hostname=iostgw6.reader.qq.com,
 
 ############## 圈x
 #QQ阅读APP获取url
-https:\/\/iostgw6\.reader\.qq\.com\/* url script-request-header https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/QQread.js   
+https:\/\/(iostgw6\.reader\.qq\.com\/*||newios\.reader\.qq\.com\/*) url script-request-header https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/QQread.js   
 
 ############## loon
 #QQ阅读APP获取url
-http-request https:\/\/iostgw6\.reader\.qq\.com\/* script-path=https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/QQread.js, requires-header=true, tag=QQ阅读APP获取url
+http-request https:\/\/(iostgw6\.reader\.qq\.com\/*||newios\.reader\.qq\.com\/*) script-path=https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/QQread.js, requires-header=true, tag=QQ阅读APP获取url
 
 ############## surge
 #QQ阅读APP获取url
-QQ阅读APP获取url = type=http-request,pattern=https:\/\/iostgw6\.reader\.qq\.com\/*,script-path=https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/QQread.js
+QQ阅读APP获取url = type=http-request,pattern=https:\/\/(iostgw6\.reader\.qq\.com\/*||newios\.reader\.qq\.com\/*),script-path=https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/QQread.js
 
 */
 const $ = Env("QQ阅读APP");
