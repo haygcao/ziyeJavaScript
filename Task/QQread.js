@@ -99,7 +99,7 @@ if (!COOKIE.QQreadurlVal) {
 
 function GetCookie() {
     if ($request && $request.url.indexOf("userinfo") >= 0 ) {
-        const QQreadurlVal = JSON.stringify($request.urls);
+        const QQreadurlVal = $request.url
         if (QQreadurlVal) $.setdata(QQreadurlVal, "QQreadurl" + $.idx);
         $.log(
             `[${$.name + $.idx}] 获取QQreadurlVal✅: 成功,QQreadurlVal: ${QQreadurlVal}`
