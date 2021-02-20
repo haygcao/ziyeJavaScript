@@ -98,7 +98,7 @@ if (!COOKIE.QQreadurlVal) {
 }
 
 function GetCookie() {
-    if ($request && $request.url.indexOf("ywkey") >= 0 && $request.url.indexOf("ywguid") >= 0) {
+    if ($request && $request.url.indexOf("userinfo") >= 0 ) {
         const QQreadurlVal = JSON.stringify($request.urls);
         if (QQreadurlVal) $.setdata(QQreadurlVal, "QQreadurl" + $.idx);
         $.log(
