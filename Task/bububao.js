@@ -455,8 +455,8 @@ function collsteps(timeout = 0) {
                     if (logs) $.log(`${O}, 步数金币🚩: ${data}`);
                     $.collsteps = JSON.parse(data);
                     if ($.collsteps.code == 1) {
-                        console.log(`步数金币：${$.collsteps.duihuan_steps}金币,${$.collsteps.msg}\n`);
-                        $.message += `【步数金币】：${$.collsteps.duihuan_steps}金币,${$.collsteps.msg}\n`;
+                        console.log(`步数金币：${$.collsteps.jinbi}金币,${$.collsteps.msg}\n`);
+                        $.message += `【步数金币】：${$.collsteps.jinbi}金币,${$.collsteps.msg}\n`;
                     }
                 } catch (e) {
                     $.logErr(e, resp);
