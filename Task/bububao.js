@@ -1158,7 +1158,7 @@ function guapost(timeout = 0) {
                 try {
                     if (logs) $.log(`${O}, 刮刮卡奖励🚩: ${data}`);
                     $.guapost = JSON.parse(data);
-                    if ($.guapost.jine) {
+                    if ($.guapost.jf) {
                         console.log(`刮刮卡奖励：获得${$.guapost.jf}金币\n`);
                         $.message += `【刮刮卡奖励】：获得${$.guapost.jf}金币\n`;
                         tid = 6
