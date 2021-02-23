@@ -14,6 +14,7 @@ boxjs链接  https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/zi
 
 2.21 制作
 2.23 完成
+2.23 修复ck问题
 
 ⚠️ 时间设置    0,30 0-23 * * *    每天 35次以上就行   
 
@@ -126,7 +127,7 @@ function GetCookie() {
         });
     }
     if ($request && $request.url.indexOf("profile") >= 0) {
-        const bububaotokenVal = JSON.stringify($request.headers.tokenstr);
+        const bububaotokenVal = $request.headers.tokenstr;
         if (bububaotokenVal) $.setdata(bububaotokenVal, "bububaotoken" + $.idx);
         $.log(
             `[${$.name + $.idx}] 获取bububaotokenVal✅: 成功,bububaotokenVal: ${bububaotokenVal}`
