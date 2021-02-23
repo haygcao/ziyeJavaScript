@@ -382,7 +382,7 @@ function home(timeout = 0) {
                         }
                         if ($.home.hb_time) {
                             console.log(`红包等待：${$.home.hb_time}秒\n`);
-                            $.message += `【红包等待】：：${$.home.hb_time}秒\n`;
+                            $.message += `【红包等待】：${$.home.hb_time}秒\n`;
                         }
                         if ((!$.home.hb_time || $.home.hb_time <= 0) && $.home.hb_st != 2) {
                             await syhb() //首页红包
