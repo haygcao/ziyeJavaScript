@@ -229,6 +229,13 @@
                     "val": "1",
                     "type": "number",
                     "desc": "指定任务最多跑几个账号，根据抓取的账号数据个数来设值"
+                },
+                {
+                    "id": "zhimaCASH",
+                    "name": "提现标准",
+                    "val": "0",
+                    "type": "number",
+                    "desc": "0不提现，可设置 0 0.3 0.5 1 5 10 30 50 100 等"
                 }
             ],
             "repo": "https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/zhima.js",
