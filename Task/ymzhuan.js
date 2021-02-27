@@ -30,7 +30,8 @@ ymzhuanggbodyVal 👉YMZ_ymzhuanggBODY
 ymzhuanspbodyVal 👉YMZ_ymzhuanspBODY
 ymzhuantxbodyVal 👉YMZ_ymzhuantxBODY
 
-BODY👉 ymzhuanUSERID   boxjs里填写4位数id即可模拟登陆
+BODY👉 ymzhuanUSERID   boxjs里填写4位数id即可模拟登陆(感谢蔡徐坤大佬提供模拟登录方法)
+
 (勿打开重写注册，请提前注册，注册不了，请打开关闭 隐私跟踪)
 
 CASH  👉  YMZ_CASH     可设置0 3 10 20 50 100  默认0关闭提现，设置888由上至下循环提现
